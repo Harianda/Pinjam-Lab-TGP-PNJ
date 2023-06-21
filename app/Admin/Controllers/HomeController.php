@@ -18,8 +18,8 @@ class HomeController extends Controller
     public function index(Content $content)
     {
         return $content
-            ->title('Dasbor')
-            ->description('Pinjam ruang')
+            ->title('Dasbord')
+            ->description('Peminjaman Ruang TGP')
             ->row(function (Row $row) {
                 // Widget for users
                 $row->column(3, function (Column $column) {
@@ -31,14 +31,14 @@ class HomeController extends Controller
                 // Widget for room types
                 $row->column(3, function (Column $column) {
                     $count_room_types = \DB::table('room_types')->count();
-                    $infoBox = new InfoBox('Tipe Ruangan', 'cubes', 'green', route('admin.auth.users.index'), $count_room_types);
+                    $infoBox = new InfoBox('Tipe Ruangan', 'cubes', 'green', route('admin.room-types.index'), $count_room_types);
                     $column->append($infoBox);
                 });
 
                 // Widget for rooms
                 $row->column(3, function (Column $column) {
                     $count_rooms = \DB::table('rooms')->count();
-                    $infoBox = new InfoBox('Ruangan', 'trello', 'yellow', route('admin.auth.users.index'), $count_rooms);
+                    $infoBox = new InfoBox('Ruangan', 'trello', 'yellow', route('admin.rooms.index'), $count_rooms);
                     $column->append($infoBox);
                 });
 
